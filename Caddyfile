@@ -1,4 +1,4 @@
-localhost:3000 {
+http://localhost:3000 { #change to your domain name such as teslaui.sporule.com to enable TLS
 	basicauth {
 		sporule JDJhJDEyJFpFdEJDZC52eUVtRDVNWWJ5QUxNZ2UuYTJjRmxJZmxSVUpablouQk1rU2k1alJna3BGZ3RP #your secure password (base64 + bcrypt), the default one is 1q2w3e4r
 	}
@@ -10,7 +10,7 @@ localhost:3000 {
 	
 }
 
-localhost:4000 {
+http://localhost:4000 { #change to your domain name such as teslamate.sporule.com to enable TLS
 	basicauth {
 		sporule JDJhJDEyJFpFdEJDZC52eUVtRDVNWWJ5QUxNZ2UuYTJjRmxJZmxSVUpablouQk1rU2k1alJna3BGZ3RP #your secure password (base64 + bcrypt), the default one is 1q2w3e4r
 	}
