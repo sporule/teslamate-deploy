@@ -39,8 +39,9 @@ services:
     image: caddy:alpine
     restart: always
     ports:
-      - 3456:3000 #grafana, you can change the port to the port you want
-      - 4567:4000 #teslamate, you can change the port to the port you want
+      - 3456:3000 #grafana, you can change the port to the port you want, this is for localhost http only
+      - 4567:4000 #teslamate, you can change the port to the port you want, this is for localhost http only
+      - 443:443 #https, you can change the port to the port you want, this is for domain name with https only
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
 
