@@ -1,0 +1,21 @@
+localhost:3000 {
+	basicauth {
+		sporule JDJhJDEyJFpFdEJDZC52eUVtRDVNWWJ5QUxNZ2UuYTJjRmxJZmxSVUpablouQk1rU2k1alJna3BGZ3RP #your secure password (base64 + bcrypt), the default one is 1q2w3e4r
+	}
+    route /* {
+        reverse_proxy grafana:3000
+    }
+
+
+	
+}
+
+localhost:4000 {
+	basicauth {
+		sporule JDJhJDEyJFpFdEJDZC52eUVtRDVNWWJ5QUxNZ2UuYTJjRmxJZmxSVUpablouQk1rU2k1alJna3BGZ3RP #your secure password (base64 + bcrypt), the default one is 1q2w3e4r
+	}
+    route /* {
+        reverse_proxy teslamate:4000
+    }
+	
+}

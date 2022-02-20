@@ -1,0 +1,52 @@
+version: "3"
+
+services:
+  teslamate:
+    image: teslamate/teslamate:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./import:/opt/app/import
+    cap_drop:
+      - all
+
+  database:
+    image: postgres:13
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - teslamate-db:/var/lib/postgresql/data
+
+  grafana:
+    image: teslamate/grafana:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - teslamate-grafana-data:/var/lib/grafana
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    restart: always
+    command: mosquitto -c /mosquitto-no-auth.conf
+    volumes:
+      - mosquitto-conf:/mosquitto/config
+      - mosquitto-data:/mosquitto/data
+  
+  caddy:
+    image: caddy:alpine
+    restart: always
+    ports:
+      - 3456:3000 #grafana, you can change the port to the port you want
+      - 4567:4000 #teslamate, you can change the port to the port you want
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+
+
+volumes:
+  teslamate-db:
+  teslamate-grafana-data:
+  mosquitto-conf:
+  mosquitto-data:
