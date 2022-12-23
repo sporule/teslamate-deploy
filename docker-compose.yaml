@@ -39,10 +39,21 @@ services:
     image: caddy:alpine
     restart: always
     ports:
-      - 3456:3000 #grafana, you can change the port to the port you want
-      - 4567:4000 #teslamate, you can change the port to the port you want
+      - 443:443
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+  
+  dbbackup:
+    image: prodrigestivill/postgres-backup-local:15
+    restart: always
+    volumes:
+      - /home/ubuntu/dbbackup:/backups
+    links:
+      - database
+    depends_on:
+      - database
+    env_file:
+      - .env
 
 
 volumes:
